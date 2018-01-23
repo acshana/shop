@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from Shop.settings import MEDIA_ROOT
 from django.views.static import serve
+from goods.views_base import GoodsListView
 
 
 # from django.contrib import admin
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    url(r'^goods/$',GoodsListView.as_view(),name="goods-list"),
 ]
