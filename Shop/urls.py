@@ -19,6 +19,7 @@ from django.views.static import serve
 from rest_framework.documentation import include_docs_urls
 from goods.views_base import GoodsListView as good1
 from goods.views import GoodsListView as good2
+from goods.generics_views import GoodsListView as good3
 
 # from django.contrib import admin
 
@@ -30,6 +31,7 @@ urlpatterns = [
     # 商品列表
     url(r'^goods1/$', good1.as_view(), name="goods-list1"),
     url(r'^goods2/$', good2.as_view(), name="goods-list2"),
+    url(r'^goods3/$', good3.as_view(), name="goods-list3"),
 
     url(r'^docs/', include_docs_urls(title='shop文档')),
 ]
