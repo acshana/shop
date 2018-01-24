@@ -20,8 +20,14 @@ from rest_framework.documentation import include_docs_urls
 from goods.views_base import GoodsListView as good1
 from goods.views import GoodsListView as good2
 from goods.generics_views import GoodsListView as good3
+from goods.sets_views import GoodsListView as good4
 
 # from django.contrib import admin
+
+goods_list = good4.as_view({
+    'get': 'list',
+    'post': 'create'
+})
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
@@ -32,6 +38,7 @@ urlpatterns = [
     url(r'^goods1/$', good1.as_view(), name="goods-list1"),
     url(r'^goods2/$', good2.as_view(), name="goods-list2"),
     url(r'^goods3/$', good3.as_view(), name="goods-list3"),
+    url(r'^goods4/$', goods_list, name="goods-list3"),
 
     url(r'^docs/', include_docs_urls(title='shop文档')),
 ]
