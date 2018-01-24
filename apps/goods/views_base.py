@@ -12,7 +12,7 @@ import json
 class GoodsListView(View):
     def get(self, request):
         '''
-        通过view实现django列表页
+        通过View实现商品列表页
         :param request:
         :return:
         '''

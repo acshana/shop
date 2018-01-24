@@ -9,7 +9,7 @@ from .ModelSerializer import GoodsModelSerializer
 # Create your views here.
 class GoodsListView(APIView):
     """
-    List all snippets, or create a new snippet.
+    通过APIView实现商品列表页
     """
 
     def get(self, request, format=None):
