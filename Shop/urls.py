@@ -21,8 +21,11 @@ from goods.views_base import GoodsListView as good1
 from goods.views import GoodsListView as good2
 from goods.generics_views import GoodsListView as good3
 from goods.sets_views import GoodsListView as good4
-
+from rest_framework.routers import DefaultRouter
 # from django.contrib import admin
+
+router=DefaultRouter()
+router.register(r'goods5',good4)
 
 goods_list = good4.as_view({
     'get': 'list',
@@ -38,7 +41,8 @@ urlpatterns = [
     url(r'^goods1/$', good1.as_view(), name="goods-list1"),
     url(r'^goods2/$', good2.as_view(), name="goods-list2"),
     url(r'^goods3/$', good3.as_view(), name="goods-list3"),
-    url(r'^goods4/$', goods_list, name="goods-list3"),
+    url(r'^goods4/$', goods_list, name="goods-list4"),
+    url(r'^', include(router.urls)),
 
     url(r'^docs/', include_docs_urls(title='shop文档')),
 ]

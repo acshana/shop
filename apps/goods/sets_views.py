@@ -17,7 +17,7 @@ class GoodsListView(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     通过View实现商品列表页
     """
-    queryset = Goods.objects.all()[:10]
+    queryset = Goods.objects.all().order_by('id')[:10]
     serializer_class = GoodsModelSerializer
     pagination_class = GoodsPagination
 
