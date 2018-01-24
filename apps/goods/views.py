@@ -1,8 +1,10 @@
-from .serializers import GoodsSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Goods
+from .serializer import GoodsSerializer
+from .ModelSerializer import GoodsModelSerializer
+
 
 # Create your views here.
 class GoodsListView(APIView):
@@ -12,10 +14,10 @@ class GoodsListView(APIView):
 
     def get(self, request, format=None):
         goods = Goods.objects.all()[:10]
-        goods_serializer = GoodsSerializer(goods, many=True)
+        goods_serializer = GoodsModelSerializer(goods, many=True)
         return Response(goods_serializer.data)
 
-    def post(self,request):
+    def post(self, request):
         serializer = GoodsSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
